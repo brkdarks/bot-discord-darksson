@@ -1,4 +1,6 @@
 const { SlashCommandBuilder } = require("discord.js");
+const { PermissionsBitField } = require('discord.js');
+
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -6,7 +8,7 @@ module.exports = {
 		.setDescription("Tornar o usuário réu.")
 		.addUserOption((option) => option.setName("target").setDescription("O usuário selecionado").setRequired(true)),
 	async execute(interaction) {
-		if (interaction.member.roles.cache.some((role) => role.permissions.has("ADMINISTRATOR"))) {
+		if (interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
 			const target = interaction.options.getUser("target");
 			const member = interaction.guild.members.cache.get(target.id);
 			const roleName = "Réu";
