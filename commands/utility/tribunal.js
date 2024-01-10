@@ -8,11 +8,11 @@ module.exports = {
 	async execute(interaction) {
 		const target = interaction.options.getUser("target");
 		const member = interaction.guild.members.cache.get(target.id);
+		const roleName = "Réu";
+		const role = interaction.guild.roles.cache.find((role) => role.name === roleName);
 
-        await member.roles.set([]);
+		await member.roles.set([role]);
 
-		await interaction.reply(
-			`${member} foi declarado réu!`
-		);
+		await interaction.reply(`${member} foi declarado réu!`);
 	},
 };
