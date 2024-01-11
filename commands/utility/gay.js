@@ -17,7 +17,6 @@ function gayTest() {
 module.exports = {
 	data: new SlashCommandBuilder().setName("gaytest").setDescription("O bot irá dizer se você é homossexual ou não."),
 	async execute(interaction) {
-		// interaction.guild is the object representing the Guild in which the command was run
 		if (interaction.user.username == "the_darkss") {
 			await interaction.reply(`Você é sigma, 100% hétero!`);
 		} else {
